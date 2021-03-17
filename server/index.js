@@ -8,6 +8,24 @@ const app = express();
 // Config
 const port = process.env.PORT || 3001;
 
+// Database
+var connection = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: '',
+    database: 'budget-app-db',
+});
+
+// Test DB Connection
+connection.connect((err) => {
+    if (err) {
+        console.log(`Can't connect to database ${err.message}`);
+        return;
+    }
+
+    console.log(`Connected to database as id ${connection.threadId}...`);
+});
+
 // Middlewares
 app.use(cors());
 app.use(bodyParser.urlencoded({extended: false}))
