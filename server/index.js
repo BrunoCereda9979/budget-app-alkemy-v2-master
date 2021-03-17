@@ -16,16 +16,6 @@ var connection = mysql.createConnection({
     database: 'budget-app-db',
 });
 
-// Test DB Connection
-connection.connect((err) => {
-    if (err) {
-        console.log(`Can't connect to database ${err.message}`);
-        return;
-    }
-
-    console.log(`Connected to database as id ${connection.threadId}...`);
-});
-
 // Middlewares
 app.use(cors());
 app.use(bodyParser.urlencoded({extended: false}))
@@ -33,13 +23,36 @@ app.use(bodyParser.json());
 app.use(morgan('dev'));
 
 // Endpoints
-app.get('/api', (req, res) => {
-    res.json({
-        'status': 200,
-        'message': 'hello from the server'
+app.get('/api/operations', (req, res) => {
+    connection.connect((err) => {
+        if (err) {
+            res.json({
+                'status': 500,
+                'message': 'There is an error with the database connection' 
+            })
+        }
+        else {
+            connection.query('SELECT * FROM `operations`', (errors, results, fields) => {
+                if (errors) {
+                    res.status(500).json({
+                        'status': 500,
+                        'message': 'There is an error with the query' 
+                    })
+                }
+                else {
+                    res.status(200).json({
+                        'status': 200,
+                        'message': {
+                            results
+                        }
+                    })
+                }
+            });
+        }
     })
 });
 
+// Server listening
 app.listen(port, () => {
     console.log(`Server listening on port ${port}...`);
 })
