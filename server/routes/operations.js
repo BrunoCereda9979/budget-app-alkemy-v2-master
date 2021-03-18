@@ -2,8 +2,8 @@ const express = require('express');
 const router = express.Router();
 const mysql = require('mysql');
 
-// Database
-var connection = mysql.createConnection({
+// Connection to Dabatabase
+let connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
     password: '',
@@ -21,7 +21,7 @@ router.get('', (req, res) => {
 
             connection.end((err) => {
                 if (err) {
-                    console.log('Cant close connection to database' + err);
+                    console.log('---Cant close connection to database' + err);
                 } 
             })
         }
@@ -40,13 +40,12 @@ router.get('', (req, res) => {
                             results
                         }
                     })
-                }
-            });
-
-            connection.end((err) => {
-                if (err) {
-                    console.log('Cant close connection to database' + err);
                 }   
+                connection.end((err) => {
+                    if (err) {
+                        console.log('Cant close connection to database' + err);
+                    }   
+                });
             });
         }
     });
