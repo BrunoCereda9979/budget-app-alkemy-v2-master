@@ -8,7 +8,7 @@ function App() {
   useEffect(() => {
     fetch("/api/operations")
       .then((res) => res.json())
-      .then((data) => setAllOperations(data.message))
+      .then((data) => console.log(data))
       .catch((err) => console.log(err))
   });
 
