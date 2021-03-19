@@ -1,18 +1,28 @@
 import { useEffect, useState } from "react";
+import axios from "axios";
 
 // Styles
 import "./App.css";
 
 // Components
 import OperationCard from "./components/operation-card/operation-card.component";
+import OperationsList from "./components/operations-list/operations-list.component";
 
 // Assets
 import NewOperationIcon from "./assets/new-operation-icon.svg";
-import ExpenseIcon from "./assets/expense-icon.svg";
-import EditButton from "./assets/edit-button.svg";
-import DeleteButton from "./assets/delete-button.svg";
+import LoadingAnimation from "./assets/loading-animation.svg";
 
 function App() {
+  const [operations, setOperations] = useState([]);
+  const [totalBalance, setTotalBalance] = useState(0);
+
+  // On render fetch the data
+  useEffect(() => {
+    axios.get("http://localhost:3001/api/operations")
+      .then(res => setOperations(res.data.message.result))
+      .catch(err => console.log(err));
+  }, []);
+
   return (
     <div className="App">
       {/* Cards Container Section */}
@@ -21,7 +31,7 @@ function App() {
         <div className="card">
           <div className="card-content expenses-card">
             <h1>Balance Actual</h1>
-            <p id="total-balance">$3522.00</p>
+            <p id="total-balance">${ totalBalance }</p>
           </div>
         </div>
         {/* Show income and show expenses buttons */}
@@ -43,7 +53,23 @@ function App() {
       </div>
 
       {/* Operation Cards Section */}
-      <div id="operations-container">{}</div>
+      <OperationsList>
+        {
+          operations ? <img style={{width: "80px"}} src={LoadingAnimation} alt="Loading animations"></img> : 
+          operations.map((op) => {
+            return (
+              <OperationCard
+                key={op.operation_id}
+                amount={op.operation_amount}
+                date={op.operation_date}
+                desc={op.operation_desc}
+                type={op.operation_type}
+              />
+            );
+          })
+        }
+      </OperationsList>
+      {/* <div id="operations-container">{}</div> */}
     </div>
   );
 }

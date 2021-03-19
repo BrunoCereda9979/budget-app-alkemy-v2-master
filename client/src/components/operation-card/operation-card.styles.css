@@ -16,7 +16,7 @@
 
 .operation-info {
     text-align: left;
-    width: 206px;
+    width: 220px;
     height: 100px;
     position: relative;
     top: 12%;
@@ -34,7 +34,7 @@
 }
 
 .operation-info p {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     color: #FFFFFF;
 }
 

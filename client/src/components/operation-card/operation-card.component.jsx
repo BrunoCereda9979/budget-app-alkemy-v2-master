@@ -9,14 +9,18 @@ import DeleteIcon from '../../assets/delete-button.svg';
 // Styles
 import './operation-card.styles.css';
 
-const OperationCard = ({operationAmount, operationDate, operationDesc}) => {
+const OperationCard = ({amount, date, desc, type}) => {
     return (
         <div className="operation-card">
-            <img className="operation-type-icon" src={ExpenseIcon} alt="Expense Icon"/>
+            {
+                type === 'expense' 
+                ? <img className="operation-type-icon" src={ExpenseIcon} alt="Expense Icon"/> 
+                : <img className="operation-type-icon" src={IncomeIcon} alt="Expense Icon"/>
+            }
             <div className="operation-info">
-                <h2>- ${operationAmount}</h2>
-                <h3>{operationDate}</h3>
-                <p>{operationDesc}</p>
+                <h2>{type === 'expense' ? '-' : '+'} ${amount}</h2>
+                <h3>{date}</h3>
+                <p>{desc}</p>
             </div>
             <div className="action-buttons-container">
                 <button className="action-button"><img src={EditIcon} alt="Edit icon"/></button>
