@@ -1,14 +1,193 @@
-body {
+/* Font */
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap");
+
+* {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background-color: #19204A;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* Variables */
+:root {
+  --main-font-color: #ffffff;
+  --strong-font-color: #ff286d;
+  --date-font-color: #8b94a9;
+  --main-bg-color: #19204a;
+  --card-bg-color: #1f2c5b;
+  --modal-container-bg-color: rgba(0, 0, 0, 0.5);
+  --font-size: 22px;
+  --card-border-radius: 15px; /*----------> Use latter*/
+}
+
+body {
+  background-color: var(--main-bg-color);
+  font-size: var(--font-size);
+  font-family: "Open Sans", "Segoe UI", sans-serif;
+}
+
+/*------------------------ Cards Section ------------------------*/
+#cards-container {
+  width: 676px;
+  height: 210px;
+  margin: auto;
+  margin-top: 159px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.card {
+  background-color: var(--card-bg-color);
+  width: 210px;
+  height: 210px;
+  border-radius: var(--card-border-radius);
+}
+
+.card-content {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  text-align: center;
+}
+
+/* --- EXPENSES CARD --- */
+.expenses-card h1 {
+  color: var(--main-font-color);
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+.expenses-card p {
+  color: var(--strong-font-color);
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+/* --- BUTTON CARD --- */
+.button-card h1 {
+  color: var(--main-font-color);
+  font-weight: 600;
+  font-size: 1.4rem;
+  margin-bottom: 21px;
+}
+
+.button-card img {
+  width: 40px;
+}
+
+.buttons-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.small-card {
+  background-color: var(--card-bg-color);
+  color: var(--main-font-color);
+  height: 95px;
+  padding: 0 10px 0 10px;
+  text-align: center;
+  border-radius: var(--card-border-radius);
+}
+
+.small-card p {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  text-align: center;
+}
+
+.btn {
+  box-shadow: 0px 2px 3px 1px rgba(0, 0, 0, 0.2);
+}
+
+.btn:hover {
+  cursor: pointer;
+}
+
+/*------------------------ Operations Section ------------------------*/
+#operations-container {
+  width: 676px;
+  margin: auto;
+  margin-top: 48px;
+  display: flex;
+  flex-direction: column;
+}
+
+/*------------------------ MODAL ------------------------*/
+.modal-container {
+  background-color: var(--modal-container-bg-color);
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.hidden {
+  display: none;
+}
+
+.modal {
+  background-color: var(--main-bg-color);
+  width: 350px;
+  max-width: 100%;
+  height: 350px;
+  border-radius: var(--card-border-radius);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+  padding: 10px 10px;
+  z-index: inherit;
+}
+
+.modal form {
+  color: var(--main-font-color);
+}
+
+.modal h3 {
+  color: var(--strong-font-color);
+  font-weight: 400;
+  margin: 15px 0 15px 0;
+}
+
+.input {
+  width: 80%;
+  padding: 10px 15px;
+  margin-bottom: 15px;
+  border-radius: var(--card-border-radius);
+  font-size: 1rem;
+}
+
+.date-input {
+  margin-bottom: 15px;
+  font-size: 1rem;
+}
+
+.form-buttons-container {
+  margin-top: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.form-button {
+  background-color: var(--strong-font-color);
+  color: var(--main-font-color);
+  padding: 10px 15px;
+  border: none;
+  border-radius: var(--card-border-radius);
+  font-size: 1rem;
 }

@@ -1,0 +1,47 @@
+.operation-card {
+    background-color: #1F2C5B;
+    width: 100%;
+    height: 138px;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.operation-type-icon {
+    position: relative;
+    top: 4%;
+    left: 5%;
+}
+
+.operation-info {
+    text-align: left;
+    width: 206px;
+    height: 100px;
+    position: relative;
+    top: 12%;
+    left: 10%;
+}
+
+.operation-info h2 {
+    font-size: 1.3rem;
+    color: #FF286D;
+}
+
+.operation-info h3 {
+    font-size: 0.8rem;
+    color: #8B94A9;
+}
+
+.operation-info p {
+    font-size: 0.9rem;
+    color: #FFFFFF;
+}
+
+.action-button {
+    background: none;
+    border: none;
+    position: relative;
+    top: 40%;
+    left: 200%;
+}
