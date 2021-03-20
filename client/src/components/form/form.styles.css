@@ -1,0 +1,45 @@
+form {
+  color: var(--main-font-color);
+}
+
+h3 {
+  color: var(--strong-font-color);
+  font-weight: 400;
+  font-size: 1.4rem;
+  margin: 15px 0 15px 0;
+}
+
+.input {
+  width: 80%;
+  padding: 5px 15px;
+  margin-bottom: 15px;
+  border-radius: var(--card-border-radius);
+  font-size: 1rem;
+}
+
+.date-input {
+  margin-bottom: 15px;
+  font-size: 1rem;
+}
+
+.radio-button {
+    margin-left: 15px;
+}
+
+.form-buttons-container {
+  margin-top: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.form-button {
+  background-color: var(--strong-font-color);
+  width: 100px;
+  color: var(--main-font-color);
+  padding: 10px 15px;
+  margin-bottom: 10px;
+  border: none;
+  border-radius: var(--card-border-radius);
+  font-size: 1rem;
+}

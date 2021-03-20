@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import Modal from 'react-modal';
 
 // Styles
 import "./App.css";
@@ -7,14 +8,19 @@ import "./App.css";
 // Components
 import OperationCard from "./components/operation-card/operation-card.component";
 import OperationsList from "./components/operations-list/operations-list.component";
+import Form from "./components/form/form.component";
 
 // Assets
 import NewOperationIcon from "./assets/new-operation-icon.svg";
 import LoadingAnimation from "./assets/loading-animation.svg";
 
+// Fix modal error
+Modal.setAppElement('#root');
+
 function App() {
   const [operations, setOperations] = useState([]);
   const [totalBalance, setTotalBalance] = useState(0);
+  const [modalOpen, setModalOpen] = useState(false);
 
   // On render fetch the data
   useEffect(() => {
@@ -44,7 +50,7 @@ function App() {
           </div>
         </div>
         {/* Add new operation button */}
-        <div className="card btn" id="open-modal-btn">
+        <div onClick={() => setModalOpen(true)} className="card btn" id="open-modal-btn">
           <div className="card-content button-card">
             <h1>Nueva Operacion</h1>
             <img src={NewOperationIcon} alt="New operation icon"></img>
@@ -52,10 +58,16 @@ function App() {
         </div>
       </div>
 
+      {/* Add New Operation Modal */}
+      <Modal isOpen={modalOpen} style={{overlay: {backgroundColor: 'black', textAlign: 'center'}}, {content: {borderRadius: '15px', backgroundColor: '#19204a', width: '350px', height: '400px', textAlign: 'center'}}}>
+        <Form/>
+        <button className="form-button" onClick={() => setModalOpen(false)}>Cerrar</button>
+      </Modal>
+
       {/* Operation Cards Section */}
       <OperationsList>
         {
-          operations ? <img style={{width: "80px"}} src={LoadingAnimation} alt="Loading animations"></img> : 
+          !operations ? 'Loading Operations...' : 
           operations.map((op) => {
             return (
               <OperationCard

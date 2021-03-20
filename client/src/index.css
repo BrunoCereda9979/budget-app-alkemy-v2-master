@@ -122,71 +122,11 @@ body {
 }
 
 /*------------------------ MODAL ------------------------*/
-.modal-container {
-  background-color: var(--modal-container-bg-color);
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 1;
-}
-
-.hidden {
-  display: none;
-}
-
-.modal {
-  background-color: var(--main-bg-color);
-  width: 350px;
-  max-width: 100%;
-  height: 350px;
-  border-radius: var(--card-border-radius);
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-  text-align: center;
-  padding: 10px 10px;
-  z-index: inherit;
-}
-
-.modal form {
-  color: var(--main-font-color);
-}
-
-.modal h3 {
-  color: var(--strong-font-color);
-  font-weight: 400;
-  margin: 15px 0 15px 0;
-}
-
-.input {
-  width: 80%;
-  padding: 10px 15px;
-  margin-bottom: 15px;
-  border-radius: var(--card-border-radius);
-  font-size: 1rem;
-}
-
-.date-input {
-  margin-bottom: 15px;
-  font-size: 1rem;
-}
-
-.form-buttons-container {
-  margin-top: 15px;
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-}
-
 .form-button {
   background-color: var(--strong-font-color);
   color: var(--main-font-color);
   padding: 10px 15px;
+  margin-bottom: 10px;
   border: none;
   border-radius: var(--card-border-radius);
   font-size: 1rem;
