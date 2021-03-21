@@ -12,7 +12,6 @@ import Form from "./components/form/form.component";
 
 // Assets
 import NewOperationIcon from "./assets/new-operation-icon.svg";
-import LoadingAnimation from "./assets/loading-animation.svg";
 
 // Fix modal error
 Modal.setAppElement('#root');

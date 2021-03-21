@@ -17,9 +17,8 @@
 .operation-info {
     text-align: left;
     width: 220px;
-    height: 100px;
     position: relative;
-    top: 12%;
+    top: 4%;
     left: 10%;
 }
 
@@ -43,5 +42,5 @@
     border: none;
     position: relative;
     top: 40%;
-    left: 200%;
+    left: 180%;
 }
