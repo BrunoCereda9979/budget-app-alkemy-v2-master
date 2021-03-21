@@ -24,10 +24,20 @@ function App() {
 
   // On render fetch the data
   useEffect(() => {
-    axios.get("http://localhost:3001/api/operations")
+    axios.get("/api/operations")
       .then(res => setOperations(res.data.message.result))
       .catch(err => console.log(err));
   }, []);
+
+  // Delete operation
+  const deleteOperation = (id) => {
+    console.log(`Deleting ID ${id}`);
+    axios.delete('/api/operations', {data : {operationId: id}})
+    .then(res => console.log(res))
+    .catch(err => console.log(err))
+  }
+
+  
 
   return (
     <div className="App">
@@ -72,10 +82,12 @@ function App() {
             return (
               <OperationCard
                 key={op.operation_id}
+                id={op.operation_id}
                 amount={op.operation_amount}
                 date={op.operation_date}
                 desc={op.operation_desc}
                 type={op.operation_type}
+                deleteAction={deleteOperation}
               />
             );
           })

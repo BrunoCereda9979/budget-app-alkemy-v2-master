@@ -44,7 +44,6 @@ router.get('', (req, res) => {
 
 // Post a new operation
 router.post('', (req, res) => {
-    console.log('New operation requuest body:' + req.body);
     const newOperation = {
         'description': req.body.operationDesc,
         'amount': req.body.operationAmount,
@@ -77,6 +76,7 @@ router.post('', (req, res) => {
 router.delete('', (req, res) => {
     const sql = "DELETE FROM `operations` WHERE operation_id = ?";
     let value =  req.body.operationId;
+    console.log(`This is the ID of the operation to be deleted ${req.body.operationId}`);
 
     connection.query(sql, value, (errors, results, fields) => {
         if (errors) {

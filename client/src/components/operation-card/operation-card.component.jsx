@@ -9,7 +9,7 @@ import DeleteIcon from '../../assets/delete-button.svg';
 // Styles
 import './operation-card.styles.css';
 
-const OperationCard = ({amount, date, desc, type}) => {
+const OperationCard = ({id, amount, date, desc, type, deleteAction}) => {
     return (
         <div className="operation-card">
             {
@@ -24,7 +24,7 @@ const OperationCard = ({amount, date, desc, type}) => {
             </div>
             <div className="action-buttons-container">
                 <button className="action-button"><img src={EditIcon} alt="Edit icon"/></button>
-                <button className="action-button"><img src={DeleteIcon} alt="Delete icon"/></button>
+                <button className="action-button" onClick={() => deleteAction(id)}><img src={DeleteIcon} alt="Delete icon"/></button>
             </div>
         </div>
     )
