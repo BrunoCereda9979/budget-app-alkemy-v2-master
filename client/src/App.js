@@ -39,8 +39,14 @@ function App() {
 
   // Get only incomes
   const getIncomes = () => {
-    console.log('Fetching incomes...');
     axios.get('/api/operations/incomes')
+    .then(res => setOperations(res.data.message.result))
+    .catch(err => console.log(err))
+  }
+  
+  // Get only expenses
+  const getExpenses = () => {
+    axios.get('/api/operations/expenses')
     .then(res => setOperations(res.data.message.result))
     .catch(err => console.log(err))
   }
@@ -61,7 +67,7 @@ function App() {
           <div className="small-card btn" onClick={() => getIncomes()}>
             <p>Mostrar Ingresos</p>
           </div>
-          <div className="small-card btn">
+          <div className="small-card btn" onClick={() => getExpenses()}>
             <p>Mostrar Egresos</p>
           </div>
         </div>
