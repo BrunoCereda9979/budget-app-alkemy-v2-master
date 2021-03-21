@@ -25,7 +25,10 @@ function App() {
   // On render fetch the data
   useEffect(() => {
     axios.get("/api/operations")
-      .then(res => setOperations(res.data.message.result))
+      .then(res => {
+        setOperations(res.data.message.result)
+        calcTotalBalance(res.data.message.result)
+      })
       .catch(err => console.log(err));
   }, []);
 
@@ -35,6 +38,22 @@ function App() {
     axios.delete('/api/operations', {data : {operationId: id}})
     .then(res => console.log(res))
     .catch(err => console.log(err))
+  }
+
+  // Calculate total balance
+  const calcTotalBalance = (operations) => {
+    let totalBalance = 0;
+
+    for (let i = 0; i < operations.length; i++) {
+      if (operations[i].operation_type === 'income') {
+        totalBalance += operations[i].operation_amount;
+      }
+      else {
+        totalBalance -= operations[i].operation_amount;
+      }
+    }
+
+    setTotalBalance(totalBalance);
   }
 
   // Get only incomes
