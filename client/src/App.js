@@ -37,6 +37,14 @@ function App() {
     .catch(err => console.log(err))
   }
 
+  // Get only incomes
+  const getIncomes = () => {
+    console.log('Fetching incomes...');
+    axios.get('/api/operations/incomes')
+    .then(res => setOperations(res.data.message.result))
+    .catch(err => console.log(err))
+  }
+
   return (
     <div className="App">
       {/* Cards Container Section */}
@@ -50,7 +58,7 @@ function App() {
         </div>
         {/* Show income and show expenses buttons */}
         <div className="buttons-container">
-          <div className="small-card btn">
+          <div className="small-card btn" onClick={() => getIncomes()}>
             <p>Mostrar Ingresos</p>
           </div>
           <div className="small-card btn">

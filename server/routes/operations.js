@@ -120,4 +120,30 @@ router.put('', (req, res) => {
     });
 });
 
+/********** INCOMES & EXPENSES ***********/
+router.get('/incomes', (req, res) => {
+    if (connection.state === 'authenticated') {
+        connection.query("SELECT * FROM `operations` WHERE operation_type = 'income'", (err, result) => {
+            if (err) {
+                res.status(500).json({
+                    'message': 'Could not query data from the database'
+                })
+            }
+            else {
+                res.status(200).json({
+                    'status': 200,
+                    'message': {
+                        result
+                    }
+                });             
+            }
+        });
+    }
+    else {
+        res.status(500).json({
+            'message': 'Sorry, there is an error with the server'
+        })
+    }
+});
+
 module.exports = router;
