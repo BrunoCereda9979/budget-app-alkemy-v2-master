@@ -37,8 +37,6 @@ function App() {
     .catch(err => console.log(err))
   }
 
-  
-
   return (
     <div className="App">
       {/* Cards Container Section */}
@@ -88,12 +86,12 @@ function App() {
                 desc={op.operation_desc}
                 type={op.operation_type}
                 deleteAction={deleteOperation}
+                modalAction={setModalOpen}
               />
             );
           })
         }
       </OperationsList>
-      {/* <div id="operations-container">{}</div> */}
     </div>
   );
 }
