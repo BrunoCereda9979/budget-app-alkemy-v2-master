@@ -1,11 +1,10 @@
-import { React, useState, event } from 'react';
+import { React, useState } from 'react';
 import axios from 'axios';
 
 // Syles
 import './form.styles.css';
 
 const Form = () => {
-
     const [opDescription, setOperationDesc] = useState("");
     const [opAmount, setOperationAmount] = useState(0);
     const [opDate, setOperationDate] = useState("");
@@ -14,14 +13,6 @@ const Form = () => {
     // Post new operation
     const postNewOperation = (e) =>{
         e.preventDefault();
-
-        console.log(opDescription + " " + opAmount + " " + opDate + " " + opType);
-        const newOperation = {
-            'operationDesc': opDescription,
-            'operationAmount': opAmount,
-            'operationDate': opDate,
-            'operationType': opType
-        }
 
         axios.post('http://localhost:3001/api/operations', {
             operationDesc: opDescription,
@@ -33,10 +24,9 @@ const Form = () => {
         .catch(err => console.log(err))
     }
 
-
     return (
         <form onSubmit={e => postNewOperation(e)}>
-            <h3>Agregar/Editar Operacion</h3>
+            <h3>Agregar Operacion</h3>
             <input className="input" required type="text" onChange={(e) => setOperationDesc(e.target.value)} placeholder="Concepto"/>
             <input className="input" required type="number" onChange={(e) => setOperationAmount(e.target.value)} placeholder="Monto" min="1" step="any"/>
             <input className="date-input" required type="date" onChange={(e) => setOperationDate(e.target.value)}/>

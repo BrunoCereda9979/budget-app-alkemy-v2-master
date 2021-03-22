@@ -99,7 +99,29 @@ function App() {
       </div>
 
       {/* Add New Operation Modal */}
-      <Modal isOpen={modalOpen} style={{overlay: {backgroundColor: 'black', textAlign: 'center'}}, {content: {borderRadius: '15px', backgroundColor: '#19204a', width: '350px', height: '400px', textAlign: 'center'}}}>
+      <Modal 
+        isOpen={modalOpen} 
+        style={
+          { 
+            overlay: { 
+              backgroundColor: 'black', 
+              textAlign: 'center'
+            }
+          }, 
+          { 
+            content: { 
+              borderRadius: '15px', 
+              backgroundColor: '#19204a', 
+              width: '350px', 
+              height: '400px', 
+              textAlign: 'center',
+              position: 'absolute',
+              top: '25%',
+              left: '25%',
+            }
+          }
+        } 
+      >
         <Form/>
         <button className="form-button" onClick={() => setModalOpen(false)}>Cerrar</button>
       </Modal>
